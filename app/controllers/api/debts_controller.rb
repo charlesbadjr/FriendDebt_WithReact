@@ -5,15 +5,11 @@ class Api::DebtsController < ApplicationController
    @debts = Debt.all
   end
 
-  def new
-   @debts = Debt.new(debt_params)
-  end
-
   def create
-      Debt.new(debt_params)
-    @debts = Debt.create(debt_params[:id])
+    @debts = Debt.new(debt_params)
+    Debt.create(debt_params[:id])
       if @debts.save
-      render json: @debts.find(debt_params[:id])
+      render json: @debts
      else
       render json: @debts.errors
    end

@@ -10,7 +10,7 @@ import { handleLogout } from '../reducers/user';
 class NavBar extends Component {
   rightNavs = () => {
     const { user, dispatch, history } = this.props;
-
+    console.log(user)
     if (user.id) {
       return (
         <Menu.Menu position='right'>
@@ -18,6 +18,11 @@ class NavBar extends Component {
             name='Logout'
             onClick={() => dispatch(handleLogout(history))}
           />
+          <Link to="/UserPage">
+             <Menu.Item
+                name='Profile'
+               />
+          </Link>
         </Menu.Menu>
       );
     }

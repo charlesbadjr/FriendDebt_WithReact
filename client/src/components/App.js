@@ -10,6 +10,7 @@ import RegisterDimmer from './RegisterDimmer';
 import DebtForm from './DebtForm';
 import LoanInfo from './LoanInfo';
 import LoanChart from './LoanChart';
+import UserPage from './UserPage';
 import ProtectedRoute from './ProtectedRoute';
 import AuthRoute from './AuthRoute';
 import FetchUser from './FetchUser';
@@ -32,7 +33,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/Create-A-Debt" component={DebtForm} />
             <Route exact path="/RepaymentHistory" component={LoanInfo} />
-            <Route exact path="/RegisterDimmer" component={RegisterDimmer} />
+            <Route exact path="/UserPage" component={UserPage} />
             <AuthRoute exact path="/login" component={Login} />
             <AuthRoute exact path="/register" component={Register} />
             <Route exact path="/youLOSTboy" component={NoMatch} />

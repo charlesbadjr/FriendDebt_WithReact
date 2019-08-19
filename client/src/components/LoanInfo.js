@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import LoanChart from './LoanChart';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { handlePayment } from '../reducers/debt';
 import {Header, Table, Icon, Segment } from 'semantic-ui-react';
 import axios from 'axios';
 
@@ -17,9 +20,7 @@ class LoanInfo extends Component {
                     interestRate:'0.04' } };
   
 // need to import data from database
- componentDidMount(){
-  axios.get('api/debts')
- };
+
 // set state
 
 // calculate amount already paid
@@ -46,13 +47,13 @@ class LoanInfo extends Component {
 
  
     render() {
-      
+      const { user, debt } = this.props;
         return (
       <Segment >    
-          <h1> Welcome: {this.state.user.user} </h1>
+          <h1> Welcome: {user.email} </h1>
          <div className="debtTable">
-           <Header> Your debt of ${this.state.user.debt} to {this.state.user.creditor}  </Header>      
-           <Header as="h5" > {this.state.user.description} </Header>
+           <Header> Your debt of ${this.state.payments.description} to {this.state.user.creditor}  </Header>      
+           <Header as="h5" > {this.state.payments.description} </Header>
            <Segment>
              <LoanChart 
                 
@@ -65,5 +66,8 @@ class LoanInfo extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return { user: state.user, debt: state.debt };
+};
+ export default withRouter(connect(mapStateToProps)(LoanInfo));
 
-export default LoanInfo;

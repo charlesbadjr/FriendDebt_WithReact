@@ -32,7 +32,7 @@ class Register extends Component {
         <Form.Field>
             <label htmlFor="Name"> Your Name </label>
             <input
-              id="FullName"
+              id="name"
               name="name"
               type="text"
               placeholder="John Smith"
@@ -43,7 +43,7 @@ class Register extends Component {
         <Form.Field>
             <label htmlFor="text"> UserName </label>
             <input
-              id="username"
+              id="nickname"
               name="nickname"
               type="text"
               placeholder="OwesMyM0M395"
