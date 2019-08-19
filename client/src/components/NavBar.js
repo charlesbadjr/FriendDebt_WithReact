@@ -22,7 +22,7 @@ class NavBar extends Component {
       );
     }
     return (
-      <Menu.Menu position="right">
+      <Menu.Menu  position="right">
         <Link to="/login">
           <Menu.Item name="Sign Up" />
         </Link>
@@ -32,7 +32,7 @@ class NavBar extends Component {
 
   render() {
     return (
-      <div>
+      <div >
         <Menu pointing secondary>
           <Link to="/">
             <Menu.Item name="Home" />

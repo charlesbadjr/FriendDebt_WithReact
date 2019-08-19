@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import {Segment, Button, Form, Header } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
+import Axios from 'axios';
 //import { debt } from '../reducers/money';
 
 
 
 
 class DebtForm extends Component {
-    state = { description: '', payOffDate:'', 
-              amount: '', amountleft:'', payments: '', 
+    state = { debt:[], description: '', payOffDate:'', 
+              amount: '', payments: '', 
               interestAmount: '' };
   
 
@@ -20,25 +21,38 @@ class DebtForm extends Component {
   
     handleSubmit = (event) => {
       event.preventDefault();
-
+     const { debt, amount, payments, description, payOffDate, interestAmount } = this.state;
+      Axios.post('/api/debts', {amount, payments, description, payOffDate, interestAmount })
+     .then( ({ data }) => { this.setState({ debt: [data, ...debt], name:'' })
+      })
     };
 
+ // handleStuff = (e) => {
+ //   e.preventDefault()
+ //   const { dispatch, debt } = this.props
+ //   const { Debt } = this.state
+ //   const Debt = { description, payOffDate, amount, payments, interestAmount }
+ //   dispatch({ type: 'Add_debt', Debt })
+ //   dispatch({ type: 'INC_ID' })
+ //   this.setState({ name: '' })
+ // }
 
 
-    render() {
-      const { amount, payments, amountleft, description, payOffDate, interestAmount } = this.state;
+  render() {
+      const { amount, payments, description, payOffDate, interestAmount } = this.state;
      
      
-      return (
+    return (
+      <div className="debtForm">
         <Segment basic>
-          <Header as="h1" textAlign="center"> About the Debt </Header>
-          <Form >
+          <Header as="h1" textAlign="center" > About the Debt </Header>
+          <Form onSubmit={this.handleSubmit} >
             <Form.Field>
                <input
                  autoFocus
                  required
                  id="amount"
-                 icon="cash"
+                 icon="dollar sign"
                  name="amount"
                  value={amount}
                  placeholder="Total Amount Due"
@@ -82,7 +96,7 @@ class DebtForm extends Component {
               <input
                 type="percent"
                 id="APR"
-                name="intrestAmount"
+                name="interestAmount"
                 value={interestAmount}
                 placeholder="Apply Intrest?"
                 onChange={this.handleChange}
@@ -90,13 +104,13 @@ class DebtForm extends Component {
             </Form.Field>
             
             <Segment textAlign="center" basic>
-              <Link to="./RepaymentHistory">
                  <Button color="red" 
-                         type="submit" > Submit </Button>
-              </Link> 
+                         type="submit"  > Submit </Button>
             </Segment>
           </Form>
+              <Header as='h6' >  Photo by Yiqun Tang on Unsplash </Header>
         </Segment>
+    </div>  
       );
     }
   }

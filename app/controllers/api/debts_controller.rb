@@ -1,5 +1,5 @@
 class Api::DebtsController < ApplicationController
-  before_action :authenticate_user!
+  
 
   def index
    @debts = Debt.all
@@ -10,11 +10,12 @@ class Api::DebtsController < ApplicationController
   end
 
   def create
+      Debt.new(debt_params)
     @debts = Debt.create(debt_params[:id])
       if @debts.save
-      render :json @debts.find(debt_params[:id])
+      render json: @debts.find(debt_params[:id])
      else
-    
+      render json: @debts.errors
    end
   end
 
@@ -30,7 +31,7 @@ class Api::DebtsController < ApplicationController
   private 
 
   def debt_params
-    debts.permit(debt).only{:index, :amount, :payments, :amountLeft, :userId, :description, :payOffDate, :interest }
+    params.require(:debt).permit{amount:'', payments:'', amountLeft:'', description:'', payOffDate:'', interest:'' }
   end
 
 end

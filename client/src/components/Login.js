@@ -3,6 +3,7 @@ import { Header, Segment, Form, Button, Divider, Grid } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import { handleLogin } from '../reducers/user';
+import {RegisterDimmer} from './RegisterDimmer'
 
 class Login extends Component {
   state = { email: '', password: '' };
@@ -60,7 +61,7 @@ class Login extends Component {
             </Form>
          </Grid.Column>
          <Grid.Column verticalAlign='middle' >
-           <Link to='/register'>
+           <Link to='/Register'>
              <Button content="Sign Up" icon='signup' size='big' />
            </Link>
          </Grid.Column>   

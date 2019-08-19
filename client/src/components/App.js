@@ -6,13 +6,15 @@ import Login from './Login';
 import Register from './Register';
 import Flash from './Flash';
 import Home from './Home';
-import UserPage from './UserPage';
+import RegisterDimmer from './RegisterDimmer';
 import DebtForm from './DebtForm';
+import LoanInfo from './LoanInfo';
 import LoanChart from './LoanChart';
 import ProtectedRoute from './ProtectedRoute';
 import AuthRoute from './AuthRoute';
 import FetchUser from './FetchUser';
 import styles from '../components/Styles/styles.css';
+
 
 
 
@@ -29,7 +31,8 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/Create-A-Debt" component={DebtForm} />
-            <Route exact path="/RepaymentHistory" component={LoanChart} />
+            <Route exact path="/RepaymentHistory" component={LoanInfo} />
+            <Route exact path="/RegisterDimmer" component={RegisterDimmer} />
             <AuthRoute exact path="/login" component={Login} />
             <AuthRoute exact path="/register" component={Register} />
             <Route exact path="/youLOSTboy" component={NoMatch} />

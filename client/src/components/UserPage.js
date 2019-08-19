@@ -5,13 +5,15 @@ import { connect } from 'react-redux';
 
 
 class Userpage extends Component {
-    render() {
+  state = { userName:'charlie', inDebt:true, creditor:'person1' }
+    
+  render() {
       return (
-        <div> 
+        <div className="userPage" > 
           <Header as="h1" textAlign="center">
             Good morning: 
           </Header>
-          <div> 
+          <div > 
             <Link to="/"> Return Home</Link> 
           </div>
         </div> 
