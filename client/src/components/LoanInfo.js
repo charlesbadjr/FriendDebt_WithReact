@@ -3,7 +3,7 @@ import LoanChart from './LoanChart';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handlePayment } from '../reducers/debt';
-import {Header, Table, Icon, Segment } from 'semantic-ui-react';
+import {Header, Table, Button, Icon, Segment } from 'semantic-ui-react';
 import axios from 'axios';
 
 
@@ -17,11 +17,10 @@ class LoanInfo extends Component {
 
              user:{ user:'Charlie', debt:'3000', creditor:'Abby0204', 
                     description:'I owe mother money', monthlyPayment:'200', 
-                    interestRate:'0.04' } };
-  
-// need to import data from database
-
-// set state
+                    interestRate:'0.04' }, 
+                  
+                    debt: {}
+                };
 
 // calculate amount already paid
 
@@ -30,9 +29,10 @@ class LoanInfo extends Component {
 // calculate amount due
 
 // button that pays standard payment
-  payStandard(){
-  
- }
+  consoleLOG=()=>{
+    const { user, debt, payments } = this.props;
+   console.log(debt)
+ };
 
 // subtrack payment from debt.
    
@@ -47,17 +47,21 @@ class LoanInfo extends Component {
 
  
     render() {
-      const { user, debt } = this.props;
+      const { user} = this.props;
+      const { debt } = this.state;
         return (
       <Segment >    
-          <h1> Welcome: {user.email} </h1>
+          <h1> Welcome: {user.name} </h1>
          <div className="debtTable">
            <Header> Your debt of ${this.state.payments.description} to {this.state.user.creditor}  </Header>      
            <Header as="h5" > {this.state.payments.description} </Header>
            <Segment>
              <LoanChart 
+                description={this.state.payments.description}
+                creditor={this.state.user.creditor}
                 
              />
+             <Button color="blue" onClick={this.consoleLOG}> CHECK </Button>
            </Segment>
          </div>
       </Segment>

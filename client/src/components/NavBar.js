@@ -37,8 +37,8 @@ class NavBar extends Component {
 
   render() {
     return (
-      <div >
-        <Menu pointing secondary>
+      <div className="navbar">
+        <Menu pointing secondary className="">
           <Link to="/">
             <Menu.Item name="Home" />
           </Link>

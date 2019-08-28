@@ -3,7 +3,7 @@ import {Segment, Button, Form, Header } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import Axios from 'axios';
-//import { debt } from '../reducers/money';
+import { newDebt } from '../reducers/debt';
 
 
 
@@ -18,24 +18,15 @@ class DebtForm extends Component {
       const { name, value } = event.target;
       this.setState({ [name]: value });
     }
-  
-    handleSubmit = (event) => {
-      event.preventDefault();
-     const { debt, amount, payments, description, payOffDate, interestAmount } = this.state;
-      Axios.post('/api/debts', {amount, payments, description, payOffDate, interestAmount })
-     .then( ({ data }) => { this.setState({ debt: [data, ...debt], name:'' })
-      })
-    };
 
- // handleStuff = (e) => {
- //   e.preventDefault()
- //   const { dispatch, debt } = this.props
- //   const { Debt } = this.state
- //   const Debt = { description, payOffDate, amount, payments, interestAmount }
- //   dispatch({ type: 'Add_debt', Debt })
- //   dispatch({ type: 'INC_ID' })
- //   this.setState({ name: '' })
- // }
+
+  handleStuff = (e) => {
+    e.preventDefault()
+  const { dispatch } = this.props;
+  const { debt, description, payOffDate, amount, payments, interestAmount } = this.state;
+   this.setState({ [debt]: description, payOffDate, amount, payments, interestAmount })
+    dispatch(newDebt(this.state.debt, debt));
+ };
 
 
   render() {
@@ -46,7 +37,7 @@ class DebtForm extends Component {
       <div className="debtForm">
         <Segment basic>
           <Header as="h1" textAlign="center" > About the Debt </Header>
-          <Form onSubmit={this.handleSubmit} >
+          <Form onSubmit={this.handleStuff} >
             <Form.Field>
                <input
                  autoFocus
@@ -116,7 +107,7 @@ class DebtForm extends Component {
   }
 
 
-  export default DebtForm;
+  export default connect()(DebtForm);
 
 //<div class="dropdown">
 //  <span>Mouse over me</span>

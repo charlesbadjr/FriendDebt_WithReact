@@ -11,7 +11,7 @@ class Register extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { dispatch, history } = this.props;
-    const { password, passwordConfirmation, name, nickname } = this.state
+    const { password, passwordConfirmation } = this.state
     if (password === passwordConfirmation) {
       dispatch(registerUser(this.state, history));
     } else dispatch(setFlash('Passwords dont match!, please try again', 'red'));
@@ -28,7 +28,7 @@ class Register extends Component {
     return (
       <Segment basic>
         <Header as="h1" textAlign="center">A little About You:</Header>
-        <Form onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit}>
         <Form.Field>
             <label htmlFor="Name"> Your Name </label>
             <input

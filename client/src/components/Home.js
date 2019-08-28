@@ -10,9 +10,10 @@ class Home extends Component {
     
       <div className="appIntro" >
         <Header as="h1" > Friend Loan Tracker </Header>
-        <Header as="h4" > Handy little app that keeps track of repayments your friends are expecting. Also clarify's payments for any misunderstandings. </Header>
+        
       </div>
         <div className="homeButtons" >
+        <Header as="h4" > Handy little app that keeps track of repayments your friends are expecting. Also clarify's payments for any misunderstandings. </Header>
            <Link to="/Login"> 
               <Button color="green" > New User </Button>
            </Link>

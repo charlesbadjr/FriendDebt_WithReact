@@ -14,16 +14,23 @@
     width: auto;
     
   }
-
-  .navBar {
-    background-color: blue;
-    height: 10px;
+ 
+  .navBar a, .dropdown-btn {
+    cursor: pointer;
+    border: grey;
+    font-size: 20px;
+    display: block;
+    text-align: left;
+    background-color: black;
+    height: 25px;
     width: fit-content;
   }
 }
-
+.h1 {
+  color:White;
+}
 .navBar {
-  background-color: red;
+  background-color: black;
   height: 50px;
   width: fit-content;
 }
@@ -63,6 +70,7 @@
 .yourInfo {
   text-align: center;
 }
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -87,4 +95,10 @@
   height: 100%;
   width: 100%;
 
+}
+.userPage {
+  background-image: url('./autum.jpg');
+  height: auto;
+  width: auto;
+  
 }

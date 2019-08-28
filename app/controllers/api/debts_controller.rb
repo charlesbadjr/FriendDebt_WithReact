@@ -7,7 +7,7 @@ class Api::DebtsController < ApplicationController
 
   def create
     @debts = Debt.new(debt_params)
-    Debt.create(debt_params[:id])
+     @debts = Debt.create(debt_params[:id])
       if @debts.save
       render json: @debts
      else
